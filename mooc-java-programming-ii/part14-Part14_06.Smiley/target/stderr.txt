@@ -1,0 +1,6 @@
+--- Exception in Async Thread ---
+java.lang.NullPointerException: null
+	com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
+	com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:277)
+	java.base/java.lang.Thread.run(Thread.java:829)
+
