@@ -7,6 +7,7 @@ package asteroids;
 
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Shape;
 
 /**
  *
@@ -23,6 +24,17 @@ public abstract class Character {
         
         // intialize the ship movement
         this.movement = new Point2D(0, 0);
+    }
+    
+     public boolean collide(Character other){
+        /*
+        The Shape class, which the Polygon class inherits, has a handy method for checking for collision. 
+        The method public static Shape intersect(Shape shape1, Shape shape2) returns the intersection of two Shape objects.
+        */
+        
+        // collide method use the intersect method.   
+        Shape collisionArea = Shape.intersect(this.character, other.getCharacter());
+        return collisionArea.getBoundsInLocal().getWidth() != -1;
     }
     
     public Polygon getCharacter() {

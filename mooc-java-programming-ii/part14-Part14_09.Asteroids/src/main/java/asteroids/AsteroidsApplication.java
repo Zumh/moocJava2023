@@ -87,10 +87,19 @@ public class AsteroidsApplication extends Application {
                 // moving the ship
                 ship.move();
                 asteroid.move();
+                
+                /// here we detect the collision 
+                if(ship.collide(asteroid)){
+                    
+                    // stop is the build in method from Animation Timer that stop making character move
+                    stop();
+                }
             }
         }.start();
     }
     
+    
+
  
     private Pane gameWindow(int windowWidth, int windowHeight){
         //(1) creating the game window
@@ -104,7 +113,7 @@ public class AsteroidsApplication extends Application {
         /*
          (1) creating the game window, (2) creating the ship, and (3) turning the ship.
         */
-        return 3;
+        return 2;
     }
 
 }
