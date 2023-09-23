@@ -63,6 +63,29 @@ public abstract class Character {
     public void move(){
         this.character.setTranslateX(this.character.getTranslateX() + movement.getX());
         this.character.setTranslateY(this.character.getTranslateY() + movement.getY());
+        
+        // if the character is out of the window from the left side then reset them
+        if (this.character.getTranslateX() < 0){
+            this.character.setTranslateX(this.character.getTranslateX() + AsteroidsApplication.WIDTH);
+        }
+        
+        // if the character is out of the window from the right side
+        if (this.character.getTranslateX() > AsteroidsApplication.WIDTH){
+            // we reset the location of x location to within the window frame like 900 % 300 = 0
+            this.character.setTranslateX(this.character.getTranslateX() % AsteroidsApplication.WIDTH);
+        }
+        
+        
+          // if the character is out of the window from the left side then reset them
+        if (this.character.getTranslateY() < 0){
+            this.character.setTranslateY(this.character.getTranslateY() + AsteroidsApplication.HEIGHT);
+        }
+        
+        // if the character is out of the window from the right side
+        if (this.character.getTranslateY() > AsteroidsApplication.HEIGHT){
+            // we reset the location of x location to within the window frame like 900 % 300 = 0
+            this.character.setTranslateY(this.character.getTranslateY() % AsteroidsApplication.HEIGHT);
+        }
     }
     
     public void accelerate(){

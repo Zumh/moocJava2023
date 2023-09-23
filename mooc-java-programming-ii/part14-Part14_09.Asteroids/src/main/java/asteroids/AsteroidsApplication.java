@@ -29,20 +29,23 @@ public class AsteroidsApplication extends Application {
         Adding points
         Continuous adding of asteroids
     */
+    public static int WIDTH = 300;
+    public static int HEIGHT = 200;
     @Override
     public void start(Stage stage) throws Exception {
-        int windowWidth = 600;
-        int windowHeight = 400;
+ 
         
         
-        Pane pane = gameWindow(windowWidth, windowHeight);
-        Ship ship = new Ship(windowWidth/2, windowHeight/2);
+        Pane pane = gameWindow(WIDTH, HEIGHT);
+        Ship ship = new Ship(WIDTH/2, HEIGHT/2);
         List<Asteroid> asteroids = new ArrayList<>();
         
+        pane.setPrefSize(WIDTH, WIDTH);
         // create a new asteroid and add them in the list
         for (int i = 0; i < 5; i++){
             Random rnd = new Random();
-            Asteroid asteroid = new Asteroid(rnd.nextInt(100), rnd.nextInt(100));
+            // set 0 - WIDTH of the window out of 3 will be a new location for asteroid and the random height is 0 -HEIGHT
+            Asteroid asteroid = new Asteroid(rnd.nextInt(WIDTH/3), rnd.nextInt(HEIGHT));
             asteroids.add(asteroid);
         }
         
@@ -77,12 +80,9 @@ public class AsteroidsApplication extends Application {
 
         });
         
-        /*
-        asteroids.turnRight();
-        asteroids.turnRight();
-        asteroids.accelerate();
-        asteroids.accelerate();
-        */
+        
+       
+        
         new AnimationTimer() {
             @Override
             public void handle(long now){
