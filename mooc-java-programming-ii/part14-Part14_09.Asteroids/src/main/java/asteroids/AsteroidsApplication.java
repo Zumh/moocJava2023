@@ -1,7 +1,10 @@
 package asteroids;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Point2D;
@@ -34,14 +37,24 @@ public class AsteroidsApplication extends Application {
         
         Pane pane = gameWindow(windowWidth, windowHeight);
         Ship ship = new Ship(windowWidth/2, windowHeight/2);
-        Asteroid asteroid = new Asteroid(50, 50);
+        List<Asteroid> asteroids = new ArrayList<>();
+        
+        // create a new asteroid and add them in the list
+        for (int i = 0; i < 5; i++){
+            Random rnd = new Random();
+            Asteroid asteroid = new Asteroid(rnd.nextInt(100), rnd.nextInt(100));
+            asteroids.add(asteroid);
+        }
+        
         
         pane.getChildren().add(ship.getCharacter());
-        pane.getChildren().add(asteroid.getCharacter());
+        asteroids.forEach(asteroid -> pane.getChildren().add(asteroid.getCharacter()));
+        
         
         Scene scene = new Scene(pane);
-        // turning the ship
-        moveCharacters(scene, ship, asteroid);
+        // make the ship and asteroid moves
+        moveCharacters(scene, ship, asteroids);
+        
         stage.setTitle("Asteroids!");
         stage.setScene(scene);
         stage.show();
@@ -52,7 +65,7 @@ public class AsteroidsApplication extends Application {
         
     }
     
-    private void moveCharacters(Scene scene, Ship ship, Asteroid asteroid){
+    private void moveCharacters(Scene scene, Ship ship, List<Asteroid> asteroids){
         Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
         // when press LEFT or RIGHT key from keyboard we turn by 5 degrees
         scene.setOnKeyPressed(event -> {
@@ -64,11 +77,12 @@ public class AsteroidsApplication extends Application {
 
         });
         
-        asteroid.turnRight();
-        asteroid.turnRight();
-        asteroid.accelerate();
-        asteroid.accelerate();
-        
+        /*
+        asteroids.turnRight();
+        asteroids.turnRight();
+        asteroids.accelerate();
+        asteroids.accelerate();
+        */
         new AnimationTimer() {
             @Override
             public void handle(long now){
@@ -86,14 +100,21 @@ public class AsteroidsApplication extends Application {
                 }
                 // moving the ship
                 ship.move();
-                asteroid.move();
                 
-                /// here we detect the collision 
-                if(ship.collide(asteroid)){
+                // make all the asteroid moves
+                asteroids.forEach(asteroid -> asteroid.move());
+                
+                // check if each asteroid hit with the ship if it does then stop the whole thing
+                asteroids.forEach(asteroid -> {
                     
-                    // stop is the build in method from Animation Timer that stop making character move
-                    stop();
-                }
+                    /// here we detect the collision 
+                    if(ship.collide(asteroid)){
+
+                        // stop is the build in method from Animation Timer that stop making character move
+                        stop();
+                    }
+                });
+              
             }
         }.start();
     }

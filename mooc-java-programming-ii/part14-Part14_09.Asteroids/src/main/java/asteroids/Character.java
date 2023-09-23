@@ -33,7 +33,18 @@ public abstract class Character {
         */
         
         // collide method use the intersect method.   
-        Shape collisionArea = Shape.intersect(this.character, other.getCharacter());
+        // returns the intersection of two Shape objects.
+        Shape collisionArea = Shape.intersect(this.character, other.getCharacter()); 
+        /*
+            collisionArea.getBoundsInLocal() returns the bounding box of the intersection area. 
+            In other words, it gives you a rectangle that tightly encloses the area where the ship and the other object intersect.
+
+            .getWidth() retrieves the width of this bounding box.
+
+            != -1 checks if the width is not equal to -1. 
+            If it's not equal to -1, it means that there is an actual intersection, because 
+            a valid width value (greater than or equal to 0) indicates that the two shapes are overlapping.
+        */
         return collisionArea.getBoundsInLocal().getWidth() != -1;
     }
     
