@@ -1,0 +1,48 @@
+2023-09-25 18:24:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:24:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:29:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:29:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:30:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:30:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:30:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:30:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:30:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:42:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:42:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:42:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:43:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:43:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:43:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]
+2023-09-25 18:43:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TODO" already exists; SQL statement:
+CREATE TABLE Todo (id int auto_increment primary key, name varchar(255), description varchar(10000), done boolean) [42101-197]

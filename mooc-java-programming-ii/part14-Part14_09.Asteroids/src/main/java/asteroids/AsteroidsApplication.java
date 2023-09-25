@@ -209,7 +209,7 @@ public class AsteroidsApplication extends Application {
         /*
          (1) creating the game window, (2) creating the ship, and (3) turning the ship.
         */
-        return 2;
+        return 4;
     }
 
 }
