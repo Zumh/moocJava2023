@@ -18,5 +18,5 @@ public class Projectile extends Character {
         super(new Polygon(2, -2, 2, 2, -2, 2, -2, -2), x, y);
     }
     
-    
+   
 }

@@ -16,14 +16,16 @@ import javafx.scene.shape.Shape;
 public abstract class Character {
     private Polygon character;
     private Point2D movement;
+    private boolean alive;
     
     public Character(Polygon polygon, int x, int y){
         this.character = polygon;
         this.character.setTranslateX(x);
         this.character.setTranslateY(y);
         
-        // intialize the ship movement
+        // intialize the character new movement
         this.movement = new Point2D(0, 0);
+        this.alive = true;
     }
     
      public boolean collide(Character other){
@@ -81,11 +83,29 @@ public abstract class Character {
             this.character.setTranslateY(this.character.getTranslateY() + AsteroidsApplication.HEIGHT);
         }
         
+        
         // if the character is out of the window from the right side
         if (this.character.getTranslateY() > AsteroidsApplication.HEIGHT){
+            
             // we reset the location of x location to within the window frame like 900 % 300 = 0
             this.character.setTranslateY(this.character.getTranslateY() % AsteroidsApplication.HEIGHT);
         }
+    }
+    
+    public boolean isAlive(){
+        return this.alive;
+    }
+    
+    public void setAlive(boolean alive){
+        this.alive = alive;
+    }
+    
+    public Point2D getMovement(){
+        return this.movement;
+    }
+    
+    public void setMovement(Point2D inputMovement){
+        this.movement = inputMovement;
     }
     
     public void accelerate(){
