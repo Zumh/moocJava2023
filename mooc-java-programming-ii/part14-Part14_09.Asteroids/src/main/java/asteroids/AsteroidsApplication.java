@@ -119,16 +119,6 @@ public class AsteroidsApplication extends Application {
                 }
           
 
-                // check if each asteroid hit with the ship if it does then stop the whole thing
-                /*asteroids.forEach(asteroid -> {
-                    
-                    /// here we detect the collision 
-                    if(ship.collide(asteroid)){
-
-                        // stop is the build in method from Animation Timer that stop making character move
-                        stop();
-                    }
-                });*/
                 
               
                 
@@ -174,6 +164,16 @@ public class AsteroidsApplication extends Application {
                 .filter(asteroid -> !asteroid.isAlive())
                 .collect(Collectors.toList()));
                 
+                
+                // we add this at the end of Animation because we want to cretate new asteroids
+                if(Math.random() < 0.005){
+                    Asteroid asteroid = new Asteroid(WIDTH, HEIGHT);
+                    if(!asteroid.collide(ship)){
+                        asteroids.add(asteroid);
+                        pane.getChildren().add(asteroid.getCharacter());
+                    }
+
+                }
               
               
             }
