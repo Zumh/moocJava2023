@@ -39,6 +39,7 @@ public class AsteroidsApplication extends Application {
         Pane pane = gameWindow(WIDTH, HEIGHT);
         Ship ship = new Ship(WIDTH/2, HEIGHT/2);
         List<Asteroid> asteroids = new ArrayList<>();
+        List<Projectile> projectiles = new ArrayList<>();
         
         pane.setPrefSize(WIDTH, WIDTH);
         // create a new asteroid and add them in the list
@@ -56,7 +57,7 @@ public class AsteroidsApplication extends Application {
         
         Scene scene = new Scene(pane);
         // make the ship and asteroid moves
-        moveCharacters(scene, ship, asteroids);
+        moveCharacters(scene, ship, asteroids, projectile);
         
         stage.setTitle("Asteroids!");
         stage.setScene(scene);
@@ -68,7 +69,7 @@ public class AsteroidsApplication extends Application {
         
     }
     
-    private void moveCharacters(Scene scene, Ship ship, List<Asteroid> asteroids){
+    private void moveCharacters(Scene scene, Ship ship, List<Asteroid> asteroids, List<Projectile> projectiles){
         Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
         // when press LEFT or RIGHT key from keyboard we turn by 5 degrees
         scene.setOnKeyPressed(event -> {
@@ -80,7 +81,7 @@ public class AsteroidsApplication extends Application {
 
         });
         
-        
+       
        
         
         new AnimationTimer() {
@@ -97,6 +98,20 @@ public class AsteroidsApplication extends Application {
                 
                 if (pressedKeys.getOrDefault(KeyCode.UP, false)){
                     ship.accelerate();
+                }
+                
+                if (pressedKeys.getOrDefault(KeyCode.SPACE, false)){
+                    // we shoot
+                    Projectile projectile = new Projectile((int) ship.getCharacter().getTranslateX(), (int) ship.getCharacter().getTranslateY());
+                    projectile.getCharacter().setRotate(ship.getCharacter().getRotate());
+                    projectiles.add(projectile);
+
+                    /*
+                    projectile.accelerate();
+                    projectile.setMovement(projectile.getMovement().normalize().multiply(3));
+                    */
+
+                    pane.getChildren().add(projectile.getCharacter());
                 }
                 // moving the ship
                 ship.move();
