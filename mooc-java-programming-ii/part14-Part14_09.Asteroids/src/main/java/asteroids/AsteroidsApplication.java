@@ -57,7 +57,7 @@ public class AsteroidsApplication extends Application {
         
         Scene scene = new Scene(pane);
         // make the ship and asteroid moves
-        moveCharacters(scene, ship, asteroids, projectile);
+        moveCharacters(scene, ship, asteroids, pane, projectiles);
         
         stage.setTitle("Asteroids!");
         stage.setScene(scene);
@@ -69,7 +69,7 @@ public class AsteroidsApplication extends Application {
         
     }
     
-    private void moveCharacters(Scene scene, Ship ship, List<Asteroid> asteroids, List<Projectile> projectiles){
+    private void moveCharacters(Scene scene, Ship ship, List<Asteroid> asteroids, Pane pane, List<Projectile> projectiles){
         Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
         // when press LEFT or RIGHT key from keyboard we turn by 5 degrees
         scene.setOnKeyPressed(event -> {
@@ -81,6 +81,7 @@ public class AsteroidsApplication extends Application {
 
         });
         
+       
        
        
         
