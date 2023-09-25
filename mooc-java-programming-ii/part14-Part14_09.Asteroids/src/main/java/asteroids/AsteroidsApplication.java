@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import java.util.stream.Collectors;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -14,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class AsteroidsApplication extends Application {
@@ -42,6 +45,11 @@ public class AsteroidsApplication extends Application {
         List<Asteroid> asteroids = new ArrayList<>();
         List<Projectile> projectiles = new ArrayList<>();
         
+        Text text = new Text(10, 20, "Points: 0");
+        pane.getChildren().add(text);
+        
+        AtomicInteger points = new AtomicInteger();
+        
         pane.setPrefSize(WIDTH, HEIGHT);
         // create a new asteroid and add them in the list
         for (int i = 0; i < 5; i++){
@@ -58,7 +66,7 @@ public class AsteroidsApplication extends Application {
         
         Scene scene = new Scene(pane);
         // make the ship and asteroid moves
-        moveCharacters(scene, ship, asteroids, pane, projectiles);
+        moveCharacters(scene, ship, asteroids, pane, projectiles, text, points);
         
         stage.setTitle("Asteroids!");
         stage.setScene(scene);
@@ -70,7 +78,7 @@ public class AsteroidsApplication extends Application {
         
     }
     
-    private void moveCharacters(Scene scene, Ship ship, List<Asteroid> asteroids, Pane pane, List<Projectile> projectiles){
+    private void moveCharacters(Scene scene, Ship ship, List<Asteroid> asteroids, Pane pane, List<Projectile> projectiles, Text text, AtomicInteger points){
         Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
         // when press LEFT or RIGHT key from keyboard we turn by 5 degrees
         scene.setOnKeyPressed(event -> {
@@ -138,7 +146,13 @@ public class AsteroidsApplication extends Application {
                             projectile.setAlive(false);
                             asteroid.setAlive(false);
                         }
+
                     });
+                    
+                    
+                    if (!projectile.isAlive()){
+                        text.setText("Points: " + points.addAndGet(1000));
+                    }
                 });
                 
                 // if delete every projectile that hit asteroid from the window pane
